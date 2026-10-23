@@ -1,0 +1,11 @@
+/AGENTS.md
+/CONTEXT.md
+/data/
+/materiales/
+/output/
+bin/
+obj/
+.vs/
+.env*
+appsettings.Local.json
+*.user
