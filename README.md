@@ -18,7 +18,7 @@ src/
 tests/ETL.Tests/  pruebas xUnit (no necesitan base de datos)
 database/         scripts SQL y su README
 data/             los 6 archivos CSV de entrada (no se versiona en Git; va en el paquete de entrega)
-docs/             plan de implementación
+docs/             nota de diseño técnico
 ```
 
 ## Preparar la base de datos
@@ -91,7 +91,7 @@ En las reejecuciones sobre la misma base el resultado fue 0 insertadas, 1206 omi
 
 ## Limitaciones
 - **494 encuestas rechazadas.** `surveys_part1.csv` referencia clientes y productos que no están en `clients.csv` ni `products.csv`; solo 6 de las 500 filas tienen ambos. El ETL las rechaza y registra el motivo en vez de inventar datos.
-- **Rating web a puntaje.** El CSV web trae un `Rating` de 1 a 5 y la base guarda `PuntajeSatisfaccion`. Se copia el mismo valor; es una decisión propia del proyecto, no viene de la guía.
+- **Rating web a puntaje.** El CSV web trae un `Rating` de 1 a 5 y la base guarda `PuntajeSatisfaccion`. Se copia el mismo valor; es una decisión de diseño del proyecto (no está definida en los datos de origen).
 - **Clasificación NULL en web y redes.** Solo las encuestas traen clasificación; en web y redes queda pendiente (NULL), nunca "Neutra". Las redes sociales no tienen puntaje.
 - **Fuentes técnicas.** Las reseñas y comentarios usan 5 fuentes creadas por el ETL (`ETL:WEB:WEB_REVIEWS`, `ETL:CSV:ENCUESTA_INTERNA` y una por red social). No recuperan la relación con las 100 fuentes de `fuente_datos.csv`, que se cargan pero ninguna opinión referencia.
 - No hay interfaz gráfica, API ni procesamiento en segundo plano; eso corresponde a etapas posteriores del proyecto.
