@@ -80,6 +80,8 @@ En `ETL_REPORT_DIR` se escriben tres archivos con la fecha UTC en el nombre: `re
 
 Con los datos de este proyecto la primera carga dio 1700 filas procesadas, 1206 insertadas y 494 rechazadas, y dejó Clientes 500, Productos 200, FuenteDatos 105 (100 del CSV y 5 técnicas) y Opiniones 406 (200 web, 200 de redes sociales y 6 de encuestas).
 
+En las reejecuciones sobre la misma base el resultado fue 0 insertadas, 1206 omitidas y 494 rechazadas, con los mismos conteos finales; los identificadores internos no avanzan porque no se insertan filas.
+
 ## Reglas principales
 - Los códigos con prefijo (`C007`, `P016`) se enlazan con el cliente o producto externo `7` y `16`, y se conserva el código original en la opinión. Los identificadores internos los asigna MySQL; nunca se suponen iguales a los externos.
 - Una fila con una referencia informada que no existe se rechaza con todos los motivos. Un cliente vacío en redes sociales es válido y queda en NULL.
