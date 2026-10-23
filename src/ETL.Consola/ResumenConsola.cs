@@ -4,6 +4,20 @@ namespace ETL.Consola;
 
 public static class ResumenConsola
 {
+    public static void Mostrar(ResultadoEjecucion resultado, IReadOnlyList<string> rutasReporte)
+    {
+        Console.Write(Reporte.ConstruirTexto(resultado));
+        if (rutasReporte.Count > 0)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Archivos generados:");
+            foreach (var ruta in rutasReporte)
+            {
+                Console.WriteLine($"  {ruta}");
+            }
+        }
+    }
+
     public static void MostrarDiagnostico(ResultadoEjecucion resultado, int ejemplos)
     {
         Console.WriteLine("DIAGNOSTICO (sin escritura en base de datos)");
