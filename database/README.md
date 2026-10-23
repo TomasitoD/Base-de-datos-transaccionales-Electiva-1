@@ -29,4 +29,4 @@ La transacción la abre quien llama. `sp_UpsertOpinion` lanza un error (`SQLSTAT
 ## Cómo leer `05_pruebas_base_datos.sql`
 Muestra una fila por prueba con `PASS` o `FAIL` y un resumen final. Todo corre dentro de una transacción que termina en `ROLLBACK`, y el script crea un procedimiento y una tabla temporales que elimina al terminar. Una última prueba comprueba que el número de filas no cambió.
 
-Los contadores `AUTO_INCREMENT` de InnoDB no se revierten con `ROLLBACK`, así que tras correr las pruebas los primeros ids internos reales no empiezan en 1. No afecta a los datos.
+Los contadores `AUTO_INCREMENT` de InnoDB no se revierten con `ROLLBACK`, así que tras correr las pruebas avanzan aunque las tablas queden vacías. Cuando las 4 tablas están en 0 filas, los contadores se reinician con `ALTER TABLE <tabla> AUTO_INCREMENT = 1` para que los primeros ids internos reales empiecen en 1. Nunca se hace sobre tablas con datos.
