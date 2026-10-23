@@ -1,0 +1,2 @@
+CREATE USER IF NOT EXISTS 'etl'@'localhost' IDENTIFIED BY '<PASSWORD>';
+GRANT ALL ON AnalisisOpinionesClientes.* TO 'etl'@'localhost';
