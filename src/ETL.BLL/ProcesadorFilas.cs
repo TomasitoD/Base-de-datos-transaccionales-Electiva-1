@@ -38,7 +38,7 @@ internal static class ProcesadorFilas
             }
             else
             {
-                rechazos.Add(new Rechazo(archivo, fila.Ordinal, idExterno, ["conflicto"]));
+                rechazos.Add(new Rechazo(archivo, fila.Ordinal, idExterno, [$"IdExterno {idExterno} repetido con contenido distinto"]));
             }
         }
 

@@ -105,7 +105,7 @@ public class ValidadorCatalogosTests
         Assert.Equal(1, valido.Ordinal);
         var rechazo = Assert.Single(r.Rechazos);
         Assert.Equal(2, rechazo.Ordinal);
-        Assert.Contains("conflicto", rechazo.Motivos);
+        Assert.Equal(["IdExterno 1 repetido con contenido distinto"], rechazo.Motivos);
         Assert.Equal(0, r.Omitidos);
     }
 

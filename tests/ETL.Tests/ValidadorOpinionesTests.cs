@@ -215,7 +215,7 @@ public class ValidadorOpinionesTests
 
         Assert.Single(r.Validos);
         var rechazo = Assert.Single(r.Rechazos);
-        Assert.Equal(["conflicto"], rechazo.Motivos);
+        Assert.Equal(["IdExterno W0001 repetido con contenido distinto"], rechazo.Motivos);
         Assert.Equal(2, rechazo.Ordinal);
     }
 
