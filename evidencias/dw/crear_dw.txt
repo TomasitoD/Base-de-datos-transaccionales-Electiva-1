@@ -1,0 +1,9 @@
++------------------+
+| Dimension        |
++------------------+
+| DimClasificacion |
+| DimCliente       |
+| DimFecha         |
+| DimFuente        |
+| DimProducto      |
++------------------+

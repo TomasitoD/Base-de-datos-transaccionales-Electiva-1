@@ -67,3 +67,8 @@ Consultas extra:
 | E5 | Puntaje fuera de 1 a 5, clasificación inválida o textos vacíos | vacío | Que los datos cumplen los CHECK. |
 
 Los 494 rechazos de encuestas no se guardan en la base: están en el archivo `rechazados-<fecha>.csv` que genera el ETL. Las consultas de este archivo solo describen lo que sí se cargó.
+
+## Data Warehouse (dimensiones)
+Los scripts de `database/dw/` crean la base `AnalisisOpinionesDW` con cinco dimensiones (`DimProducto`, `DimCliente`, `DimFecha`, `DimFuente`, `DimClasificacion`) y las cargan desde `AnalisisOpinionesClientes`. Orden: `06_crear_dw.sql`, `07_cargar_dimensiones.sql` (se puede repetir sin duplicar) y `08_verificar_dimensiones.sql`.
+`mysql -u <usuario> -p --default-character-set=utf8mb4 -t < database/dw/06_crear_dw.sql`
+La carga usa una transacción y `INSERT ... SELECT ... WHERE NOT EXISTS`. `DimFecha` usa la clave AAAAMMDD, `DimCliente` incluye la fila `SIN_CLIENTE` para opiniones sin cliente y `DimClasificacion` es un catálogo fijo de 4 valores. Las salidas reales están en `evidencias/dw/`.
